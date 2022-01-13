@@ -6,7 +6,8 @@ Copyright (c) Geekofia 2022 and beyond
 */
 
 import React from "react";
-import { View } from "react-native";
+import { Platform, SafeAreaView, StatusBar, View } from "react-native";
+import tw from "tailwind-react-native-classnames";
 import Header from "../elements/Header";
 
 interface LayoutProps {
@@ -15,7 +16,15 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, style }) => {
   return (
-    <View style={style}>
+    <View
+      style={tw.style(
+        style
+        // `pt-${
+        //   Platform.OS === "android" && (StatusBar.currentHeight as number) / 4
+        // }`
+      )}
+    >
+      <StatusBar />
       <Header />
       {children}
     </View>

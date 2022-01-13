@@ -16,7 +16,7 @@ interface TaskProps {
 const Task: React.FC<TaskProps> = ({ title, description }) => {
   return (
     <View
-      style={tw.style(`p-3 m-1 bg-yellow-300 rounded`, {
+      style={tw.style(`p-3 bg-yellow-300 rounded`, {
         borderStyle: "dashed",
         borderWidth: 1,
       })}
