@@ -6,7 +6,7 @@ Copyright (c) Geekofia 2022 and beyond
 */
 
 import { View } from "react-native";
-import tw from "tailwind-react-native-classnames";
+import tw from "twrnc";
 
 const TaskSeparator = () => {
   return <View style={tw`h-1`} />;
