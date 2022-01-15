@@ -23,16 +23,28 @@ const Task: React.FC<TaskProps> = ({ title, description, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View
-        style={tw.style(`p-3 bg-yellow-300 rounded`, {
+        style={tw.style(`p-3 dark:bg-black border-gray-700 rounded`, {
           borderStyle: "dashed",
           borderWidth: 1,
         })}
       >
         {/* ttitle */}
-        <Text style={tw`text-lg font-bold`}>{title}</Text>
+        <Text
+          style={tw.style(`text-lg text-black dark:text-white`, {
+            fontFamily: "Roboto-Bold",
+          })}
+        >
+          {title}
+        </Text>
         {/* description */}
         {description && (
-          <Text numberOfLines={3} ellipsizeMode="tail">
+          <Text
+            numberOfLines={3}
+            ellipsizeMode="tail"
+            style={tw.style(`text-gray-900 dark:text-gray-400`, {
+              fontFamily: "Poppins-Regular",
+            })}
+          >
             {description}
           </Text>
         )}

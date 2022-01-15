@@ -12,13 +12,18 @@ import Header from "../elements/Header";
 
 interface LayoutProps {
   style?: any;
+  toggleColorScheme?: any;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, style }) => {
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  style,
+  toggleColorScheme,
+}) => {
   return (
-    <View style={tw`flex-col h-full`}>
+    <View style={tw`flex-col h-full dark:bg-gray-800`}>
       <StatusBar />
-      <Header />
+      <Header toggleColorScheme={toggleColorScheme} />
       <View style={tw.style(style, `flex-1`)}>{children}</View>
     </View>
   );

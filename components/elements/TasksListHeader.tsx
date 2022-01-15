@@ -12,7 +12,7 @@ import tw from "twrnc";
 const TasksListHeader = () => {
   return (
     <View style={tw`p-2 flex-col justify-center items-center`}>
-      <Text style={tw`text-xl font-bold capitalize`}>
+      <Text style={tw`text-xl font-bold capitalize  dark:text-white`}>
         tasks pending
       </Text>
     </View>

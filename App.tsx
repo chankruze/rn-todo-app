@@ -1,44 +1,30 @@
-import { useState } from "react";
-import { Button, FlatList, View } from "react-native";
-import Task from "./components/elements/Task";
+import Home from "./screens/Home";
+import { useFonts } from "expo-font";
+import tw, { useDeviceContext, useAppColorScheme } from "twrnc";
 import Layout from "./components/modules/Layout";
-import { TaskType } from "./types";
-import { data } from "./fakeData";
-import TasksEmptyComponent from "./components/elements/TasksEmptyComponent";
-import tw from "twrnc";
-import TaskSeparator from "./components/elements/TaskSeparator";
-import TasksListFooter from "./components/elements/TasksListFooter";
-import TasksListHeader from "./components/elements/TasksListHeader";
-import FlatButton from "./components/elements/FlatButton";
+import * as Font from "expo-font";
 
 export default function App() {
-  const [tasks, setTasks] = useState<Array<TaskType>>(data);
+  useDeviceContext(tw, { withDeviceColorScheme: false });
+  const [colorScheme, toggleColorScheme, setColorScheme] =
+    useAppColorScheme(tw);
 
-  const addTask = (newTask: TaskType) => {
-    setTasks((oldTasks) => [...oldTasks, newTask]);
-  };
+  const [loaded] = useFonts({
+    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
+    "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
+    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
+    "Nunito-Regular": require("./assets/fonts/Nunito-Regular.ttf"),
+    "Nunito-Italic": require("./assets/fonts/Nunito-Italic.ttf"),
+    "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
+  });
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
-    <Layout>
-      <View style={tw`p-2`}>
-        <FlatButton
-          icon="add"
-          iconColor="white"
-          title="new task"
-          onPress={() => console.log("new task added")}
-        />
-      </View>
-      {/* tasks list */}
-      <FlatList
-        data={tasks}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <Task {...item} />}
-        ListEmptyComponent={TasksEmptyComponent}
-        ItemSeparatorComponent={TaskSeparator}
-        ListHeaderComponent={TasksListHeader}
-        ListFooterComponent={TasksListFooter}
-        style={tw`p-2`}
-      />
+    <Layout toggleColorScheme={toggleColorScheme}>
+      <Home />
     </Layout>
   );
 }

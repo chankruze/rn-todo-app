@@ -21,13 +21,13 @@ const FlatButton: React.FC<FlatButtonProps> = ({
   title,
   icon,
   iconColor = "blue",
-  iconSize = 32,
+  iconSize = 28,
   onPress,
 }) => {
   return (
     <TouchableOpacity
-      style={tw`py-3 px-4 flex-row justify-center items-center 
-      bg-blue-500 rounded-lg`}
+      style={tw`p-2 flex-row justify-center items-center 
+      bg-blue-500 rounded`}
       onPress={onPress}
     >
       <View style={tw`mr-1`}>
