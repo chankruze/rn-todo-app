@@ -8,22 +8,16 @@ Copyright (c) Geekofia 2022 and beyond
 import React from "react";
 import { StatusBar, View } from "react-native";
 import tw from "twrnc";
-import Header from "../elements/Header";
 
 interface LayoutProps {
   style?: any;
-  toggleColorScheme?: any;
 }
 
-const Layout: React.FC<LayoutProps> = ({
-  children,
-  style,
-  toggleColorScheme,
-}) => {
+const Layout: React.FC<LayoutProps> = ({ children, style }) => {
   return (
-    <View style={tw`flex-col h-full dark:bg-gray-800`}>
+    <View style={tw`flex-1 flex-col dark:bg-gray-800`}>
       <StatusBar />
-      <Header toggleColorScheme={toggleColorScheme} />
+      {/* <Header toggleColorScheme={toggleColorScheme} /> */}
       <View style={tw.style(style, `flex-1`)}>{children}</View>
     </View>
   );

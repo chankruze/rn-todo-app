@@ -11,7 +11,7 @@ import tw from "twrnc";
 
 const About = () => {
   return (
-    <Layout style={tw`bg-green-300`}>
+    <Layout>
       <Text>About</Text>
     </Layout>
   );

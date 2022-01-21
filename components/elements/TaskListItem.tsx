@@ -12,23 +12,32 @@ import {
   View,
 } from "react-native";
 import tw from "twrnc";
+import { TaskType } from "../../types";
 
-interface TaskProps {
+interface TaskListItemProps {
+  id: number;
   title: string;
   description?: string;
-  onPress?: ((event: GestureResponderEvent) => void) | undefined;
+  onPress: (task: TaskType) => void;
 }
 
-const Task: React.FC<TaskProps> = ({ title, description, onPress }) => {
+const TaskListItem: React.FC<TaskListItemProps> = ({
+  id,
+  title,
+  description,
+  onPress,
+}) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity
+      onPress={() => onPress({ id, title, description } as TaskType)}
+    >
       <View
-        style={tw.style(`p-3 dark:bg-black border-gray-700 rounded`, {
+        style={tw.style(`p-3 bg-white dark:bg-black border-gray-700 rounded`, {
           borderStyle: "dashed",
           borderWidth: 1,
         })}
       >
-        {/* ttitle */}
+        {/* title */}
         <Text
           style={tw.style(`text-lg text-black dark:text-white`, {
             fontFamily: "Roboto-Bold",
@@ -53,4 +62,4 @@ const Task: React.FC<TaskProps> = ({ title, description, onPress }) => {
   );
 };
 
-export default Task;
+export default TaskListItem;
