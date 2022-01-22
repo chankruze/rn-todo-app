@@ -6,28 +6,24 @@ Copyright (c) Geekofia 2022 and beyond
 */
 
 import React from "react";
-import { Text, View } from "react-native";
 import { TaskType } from "../types";
-import tw from "twrnc";
 import Layout from "../components/modules/Layout";
+import Text from "../components/modules/Text";
+import Box from "../components/modules/Box";
 
 const Task = ({ route }) => {
   const task = route.params as TaskType;
 
   return (
-    <Layout style={tw`p-4 flex-1`}>
-      <Text style={tw`text-blue-400`}>#{task.id}</Text>
-      <Text style={tw`mt-2 font-bold text-xl dark:text-white`}>
+    <Box backgroundColor="mainBackground" padding="m" flex={1}>
+      <Text variant="taskId">#{task.id}</Text>
+      <Text variant="taskTitle" marginTop="s">
         {task.title}
       </Text>
-      <Text
-        style={tw.style(`mt-2 text-base dark:text-gray-400`, {
-          fontFamily: "Nunito-Medium",
-        })}
-      >
+      <Text variant="taskDescription" marginTop="s">
         {task.description}
       </Text>
-    </Layout>
+    </Box>
   );
 };
 

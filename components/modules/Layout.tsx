@@ -6,8 +6,8 @@ Copyright (c) Geekofia 2022 and beyond
 */
 
 import React from "react";
-import { StatusBar, View } from "react-native";
-import tw from "twrnc";
+import { StatusBar } from "react-native";
+import Box from "./Box";
 
 interface LayoutProps {
   style?: any;
@@ -15,11 +15,10 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, style }) => {
   return (
-    <View style={tw`flex-1 flex-col dark:bg-gray-800`}>
+    <Box flexDirection="column" flex={1}>
       <StatusBar />
-      {/* <Header toggleColorScheme={toggleColorScheme} /> */}
-      <View style={tw.style(style, `flex-1`)}>{children}</View>
-    </View>
+      {children}
+    </Box>
   );
 };
 
