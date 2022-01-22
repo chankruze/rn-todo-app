@@ -1,27 +1,24 @@
+import { useState } from "react";
 import { useFonts } from "expo-font";
-
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-
+import { TouchableOpacity } from "react-native";
 import Layout from "./components/modules/Layout";
 import Home from "./screens/Home";
 import About from "./screens/About";
 import Task from "./screens/Task";
 import { TaskType } from "./types";
-
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TouchableOpacity, View } from "react-native";
-import tw from "twrnc";
-import Header from "./components/elements/Header";
-import { DefaultTheme, DarkTheme } from "@react-navigation/native";
+import { palette } from "./themes/palette";
 import { ThemeProvider } from "@shopify/restyle";
-import { useState } from "react";
-import darkTheme from "./themes/darkTheme";
 import defaultTheme from "./themes/defaultTheme";
+import darkTheme from "./themes/darkTheme";
+import Header from "./components/elements/Header";
+import { getHeaderTitle } from "@react-navigation/elements";
 
 const Stack = createNativeStackNavigator();
 
-export default function App({ navigation }) {
+export default function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   const [loaded] = useFonts({
@@ -52,15 +49,27 @@ export default function App({ navigation }) {
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
-              headerRight: () => (
-                <TouchableOpacity onPress={() => setDarkMode((prev) => !prev)}>
-                  <MaterialCommunityIcons
-                    name="theme-light-dark"
-                    size={28}
-                    style={tw`text-gray-600 dark:text-gray-200`}
+              header: ({ route, navigation, options, back }) => {
+                const title = getHeaderTitle(options, route.name);
+                
+                return (
+                  <Header
+                    title={title}
+                    leftButton={back}
+                    toggleColorScheme={() => setDarkMode((prev) => !prev)}
+                    goBack={navigation.goBack}
                   />
-                </TouchableOpacity>
-              ),
+                );
+              },
+              // headerRight: () => (
+              //   <TouchableOpacity onPress={() => setDarkMode((prev) => !prev)}>
+              //     <MaterialCommunityIcons
+              //       name="theme-light-dark"
+              //       size={28}
+              //       color={palette.grey[600]}
+              //     />
+              //   </TouchableOpacity>
+              // ),
             }}
           >
             <Stack.Screen

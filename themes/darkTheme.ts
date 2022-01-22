@@ -8,16 +8,38 @@ Copyright (c) Geekofia 2022 and beyond
 import defaultTheme, { Theme } from "./defaultTheme";
 import { palette } from "./palette";
 
+const backgroundColorsDark = {
+  mainBackground: palette["blue-grey"][900],
+  primaryCardBackground: palette.grey[900],
+  secondaryCardBackground: palette.grey[400],
+  toolbarBackground: palette.grey[900],
+};
+
+const textColorsDark = {
+  primaryText: palette["light-text"].primary,
+  secondaryText: palette["light-text"].secondary,
+  disabledText: palette["light-text"].disabled,
+  toolbarText: palette.white,
+};
+
+const iconColorsDark = {
+  iconActive: palette["light-icons"].active,
+  iconInactive: palette["light-icons"].inactive,
+};
+
+const borderColors = {
+  default: palette.grey[600],
+};
+
 const darkTheme: Theme = {
   ...defaultTheme,
   colors: {
     ...defaultTheme.colors,
-    mainBackground: palette.grey[900],
-    mainForeground: palette.white,
-    primaryCardBackground: palette.grey[600],
-    secondaryCardBackground: palette.grey[400],
-    primaryText: palette["light-text"].primary,
-    secondaryText: palette["light-text"].secondary,
+    // override default colors
+    ...backgroundColorsDark,
+    ...textColorsDark,
+    ...iconColorsDark,
+    ...borderColors,
   },
 };
 

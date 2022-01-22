@@ -14,6 +14,10 @@ export const cardVariants = {
     backgroundColor: "secondaryCardBackground",
     shadowOpacity: 0.1,
   },
+  toolbar: {
+    backgroundColor: "toolbarBackground",
+    shadowOpacity: 0.1,
+  },
   // elevated: {
   //   padding: {
   //     phone: "s",

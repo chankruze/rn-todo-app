@@ -8,26 +8,34 @@ Copyright (c) Geekofia 2022 and beyond
 import { palette } from "./palette";
 
 const backgroundColors = {
-  mainBackground: palette.white,
-  mainForeground: palette.black,
-  primaryCardBackground: palette.blue[400],
+  mainBackground: palette.grey[50],
+  primaryCardBackground: palette.white,
   secondaryCardBackground: palette.grey[400],
+  flatButtonBackground: palette.blue[500],
+  toolbarBackground: palette.white,
 };
 
 const textColors = {
   primaryText: palette["dark-text"].primary,
   secondaryText: palette["dark-text"].secondary,
   disabledText: palette["dark-text"].disabled,
-  taskIdText: palette.red[500],
+  taskIdText: palette.blue[500],
+  flatButtonText: palette.white,
+  toolbarText: palette.black,
 };
 
 const iconColors = {
-  active: palette["dark-icons"].active,
-  inactive: palette["dark-icons"].inactive,
+  iconActive: palette["dark-icons"].active,
+  iconInactive: palette["dark-icons"].inactive,
+};
+
+const borderColors = {
+  default: palette.grey[600],
 };
 
 export const colors = {
   ...backgroundColors,
   ...textColors,
   ...iconColors,
+  ...borderColors,
 };

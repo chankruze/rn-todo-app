@@ -6,14 +6,13 @@ Copyright (c) Geekofia 2022 and beyond
 */
 
 import { Text } from "react-native";
-import Layout from "../components/modules/Layout";
-import tw from "twrnc";
+import Box from "../components/modules/Box";
 
 const About = () => {
   return (
-    <Layout>
+    <Box>
       <Text>About</Text>
-    </Layout>
+    </Box>
   );
 };
 

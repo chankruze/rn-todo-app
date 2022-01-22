@@ -7,7 +7,6 @@ Copyright (c) Geekofia 2022 and beyond
 
 import React from "react";
 import { TaskType } from "../types";
-import Layout from "../components/modules/Layout";
 import Text from "../components/modules/Text";
 import Box from "../components/modules/Box";
 

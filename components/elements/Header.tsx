@@ -5,32 +5,56 @@ Created: Thu Jan 13 2022 14:08:22 GMT+0530 (India Standard Time)
 Copyright (c) Geekofia 2022 and beyond
 */
 
-import { Text, TouchableOpacity, View } from "react-native";
-import tw from "twrnc";
+import { TouchableOpacity } from "react-native";
 import AppConfig from "../../config";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { palette } from "../../themes/palette";
+import Text from "../modules/Text";
+import Box from "../modules/Box";
 
 interface HeaderProps {
-  toggleColorScheme: any;
+  title: string;
+  toggleColorScheme?: any;
+  leftButton?: any;
+  goBack?: any;
 }
 
-const Header: React.FC<HeaderProps> = ({ toggleColorScheme }) => {
+const Header: React.FC<HeaderProps> = ({
+  title,
+  goBack,
+  leftButton,
+  toggleColorScheme,
+}) => {
   return (
-    <View
-      style={tw`p-3 flex-row justify-between items-center 
-      bg-gray-50 dark:bg-black`}
+    <Box
+      padding="s"
+      flexDirection="row"
+      alignItems="center"
+      backgroundColor="toolbarBackground"
+      height={60}
     >
-      <Text style={tw`text-xl font-bold text-black dark:text-white`}>
-        {AppConfig.APP_NAME}
-      </Text>
+      {leftButton && (
+        <TouchableOpacity onPress={goBack}>
+          <MaterialCommunityIcons
+            name="arrow-left"
+            size={28}
+            color={palette.grey[500]}
+          />
+        </TouchableOpacity>
+      )}
+      <Box flex={1} paddingLeft="s">
+        <Text variant="toolbarTitle" numberOfLines={1} ellipsizeMode="tail">
+          {title}
+        </Text>
+      </Box>
       <TouchableOpacity onPress={toggleColorScheme}>
         <MaterialCommunityIcons
           name="theme-light-dark"
           size={28}
-          style={tw`text-black dark:text-white`}
+          color={palette.grey[500]}
         />
       </TouchableOpacity>
-    </View>
+    </Box>
   );
 };
 

@@ -5,14 +5,10 @@ Created: Thu Jan 13 2022 14:53:28 GMT+0530 (India Standard Time)
 Copyright (c) Geekofia 2022 and beyond
 */
 
-import {
-  GestureResponderEvent,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import tw from "twrnc";
+import { TouchableOpacity } from "react-native";
 import { TaskType } from "../../types";
+import Box from "../modules/Box";
+import Text from "../modules/Text";
 
 interface TaskListItemProps {
   id: number;
@@ -31,33 +27,27 @@ const TaskListItem: React.FC<TaskListItemProps> = ({
     <TouchableOpacity
       onPress={() => onPress({ id, title, description } as TaskType)}
     >
-      <View
-        style={tw.style(`p-3 bg-white dark:bg-black border-gray-700 rounded`, {
-          borderStyle: "dashed",
-          borderWidth: 1,
-        })}
+      <Box
+        padding="s"
+        backgroundColor="primaryCardBackground"
+        borderColor="default"
+        borderWidth={1}
+        borderStyle="dashed"
+        borderRadius="s"
       >
         {/* title */}
-        <Text
-          style={tw.style(`text-lg text-black dark:text-white`, {
-            fontFamily: "Roboto-Bold",
-          })}
-        >
-          {title}
-        </Text>
+        <Text variant="taskListItemTitle">{title}</Text>
         {/* description */}
         {description && (
           <Text
             numberOfLines={3}
             ellipsizeMode="tail"
-            style={tw.style(`text-gray-900 dark:text-gray-400`, {
-              fontFamily: "Poppins-Regular",
-            })}
+            variant="taskListItemText"
           >
             {description}
           </Text>
         )}
-      </View>
+      </Box>
     </TouchableOpacity>
   );
 };

@@ -6,6 +6,7 @@ Copyright (c) Geekofia 2022 and beyond
 */
 
 export const spacing = {
+  xs: 4,
   s: 8,
   m: 16,
   l: 24,

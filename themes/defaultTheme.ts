@@ -18,6 +18,7 @@ const defaultTheme = createTheme({
   breakpoints,
   textVariants,
   cardVariants,
+  borderRadii: spacing,
 });
 
 export type Theme = typeof defaultTheme;

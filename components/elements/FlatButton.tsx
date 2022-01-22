@@ -5,9 +5,10 @@ Created: Thu Jan 13 2022 14:32:20 GMT+0530 (India Standard Time)
 Copyright (c) Geekofia 2022 and beyond
 */
 
-import { View, Text, TouchableOpacity } from "react-native";
-import tw from "twrnc";
+import { TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import Box from "../modules/Box";
+import Text from "../modules/Text";
 
 interface FlatButtonProps {
   title: string;
@@ -25,15 +26,20 @@ const FlatButton: React.FC<FlatButtonProps> = ({
   onPress,
 }) => {
   return (
-    <TouchableOpacity
-      style={tw`p-2 flex-row justify-center items-center 
-      bg-blue-500 rounded`}
-      onPress={onPress}
-    >
-      <View style={tw`mr-1`}>
-        <MaterialIcons name={icon} size={iconSize} color={iconColor} />
-      </View>
-      <Text style={tw`text-white uppercase`}>{title}</Text>
+    <TouchableOpacity onPress={onPress}>
+      <Box
+        padding="s"
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="center"
+        backgroundColor="flatButtonBackground"
+        borderRadius="s"
+      >
+        <Box marginRight="xs">
+          <MaterialIcons name={icon} size={iconSize} color={iconColor} />
+        </Box>
+        <Text variant="flatButtonText">{title}</Text>
+      </Box>
     </TouchableOpacity>
   );
 };

@@ -5,9 +5,8 @@ Created: Fri Jan 14 2022 20:24:52 GMT+0530 (India Standard Time)
 Copyright (c) Geekofia 2022 and beyond
 */
 
-import { useState, useEffect } from "react";
-import { Button, FlatList, View } from "react-native";
-import tw from "twrnc";
+import { useState } from "react";
+import { FlatList } from "react-native";
 import { data } from "../fakeData";
 import { TaskType } from "../types";
 import TaskListItem from "../components/elements/TaskListItem";
@@ -16,9 +15,7 @@ import TaskSeparator from "../components/elements/TaskSeparator";
 import TasksListFooter from "../components/elements/TasksListFooter";
 import TasksListHeader from "../components/elements/TasksListHeader";
 import FlatButton from "../components/elements/FlatButton";
-import { MaterialIcons } from "@expo/vector-icons";
-import Header from "../components/elements/Header";
-import Layout from "../components/modules/Layout";
+import Box from "../components/modules/Box";
 
 const Home = ({ navigation }) => {
   const [tasks, setTasks] = useState<Array<TaskType>>(data);
@@ -29,30 +26,20 @@ const Home = ({ navigation }) => {
 
   const openTask = (payload: TaskType) => navigation.navigate("Task", payload);
 
-  useEffect(() => {
-    navigation.setOptions({
-      // headerRight: () => (
-      //   <MaterialIcons
-      //     onPress={() => navigation.navigate("About")}
-      //     name="info"
-      //     size={32}
-      //     style={tw`text-blue-400 dark:text-gray-400`}
-      //   />
-      // ),
-    });
-  }, []);
-
   return (
-    <>
-      <View style={tw`p-2`}>
-        <FlatButton
-          icon="add"
-          iconColor="white"
-          title="new task"
-          // TODO: Open NewTask Modal
-          onPress={() => console.log("new task added")}
-        />
-      </View>
+    <Box
+      padding="s"
+      flex={1}
+      flexDirection="column"
+      backgroundColor="mainBackground"
+    >
+      <FlatButton
+        icon="add"
+        iconColor="white"
+        title="new task"
+        // TODO: Open NewTask Modal
+        onPress={() => console.log("new task added")}
+      />
       {/* tasks list */}
       <FlatList
         data={tasks}
@@ -62,9 +49,8 @@ const Home = ({ navigation }) => {
         ItemSeparatorComponent={TaskSeparator}
         ListHeaderComponent={TasksListHeader}
         ListFooterComponent={TasksListFooter}
-        style={tw`p-2`}
       />
-    </>
+    </Box>
   );
 };
 
