@@ -6,11 +6,11 @@ Copyright (c) Geekofia 2022 and beyond
 */
 
 import { TouchableOpacity } from "react-native";
-import AppConfig from "../../config";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { palette } from "../../themes/palette";
 import Text from "../modules/Text";
 import Box from "../modules/Box";
+import Card from "../modules/Card";
 
 interface HeaderProps {
   title: string;
@@ -26,12 +26,13 @@ const Header: React.FC<HeaderProps> = ({
   toggleColorScheme,
 }) => {
   return (
-    <Box
+    <Card
       padding="s"
       flexDirection="row"
       alignItems="center"
-      backgroundColor="toolbarBackground"
       height={60}
+      variant="elevated"
+      backgroundColor="toolbarBackground"
     >
       {leftButton && (
         <TouchableOpacity onPress={goBack}>
@@ -54,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({
           color={palette.grey[500]}
         />
       </TouchableOpacity>
-    </Box>
+    </Card>
   );
 };
 

@@ -16,23 +16,25 @@ interface FlatButtonProps {
   iconColor?: any;
   iconSize?: any;
   onPress: any;
+  disabled?: any;
 }
 
 const FlatButton: React.FC<FlatButtonProps> = ({
   title,
   icon,
-  iconColor = "blue",
+  iconColor = "white",
   iconSize = 28,
   onPress,
+  disabled = false,
 }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} disabled={disabled}>
       <Box
         padding="s"
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
-        backgroundColor="flatButtonBackground"
+        backgroundColor={disabled ? "muted" : "primary"}
         borderRadius="s"
       >
         <Box marginRight="xs">

@@ -16,9 +16,12 @@ import TasksListFooter from "../components/elements/TasksListFooter";
 import TasksListHeader from "../components/elements/TasksListHeader";
 import FlatButton from "../components/elements/FlatButton";
 import Box from "../components/modules/Box";
+import Card from "../components/modules/Card";
+import CreateTaskModal from "../components/elements/CreateTaskModal";
 
 const Home = ({ navigation }) => {
   const [tasks, setTasks] = useState<Array<TaskType>>(data);
+  const [isCreateTaskModal, setIsCreateTaskModal] = useState<boolean>(false);
 
   const addTask = (newTask: TaskType) => {
     setTasks((oldTasks) => [...oldTasks, newTask]);
@@ -27,24 +30,36 @@ const Home = ({ navigation }) => {
   const openTask = (payload: TaskType) => navigation.navigate("Task", payload);
 
   return (
-    <Box
-      padding="s"
-      flex={1}
-      flexDirection="column"
-      backgroundColor="mainBackground"
-    >
-      <FlatButton
-        icon="add"
-        iconColor="white"
-        title="new task"
-        // TODO: Open NewTask Modal
-        onPress={() => console.log("new task added")}
-      />
+    <Box flex={1} flexDirection="column" backgroundColor="mainBackground">
+      <Box padding="s">
+        <FlatButton
+          icon="add"
+          iconColor="white"
+          title="new task"
+          onPress={() => setIsCreateTaskModal((prev) => !prev)}
+        />
+      </Box>
+      {/* Add task modal */}
+      {isCreateTaskModal && (
+        <CreateTaskModal close={() => setIsCreateTaskModal((prev) => !prev)} />
+      )}
       {/* tasks list */}
       <FlatList
         data={tasks}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <TaskListItem {...item} onPress={openTask} />}
+        renderItem={({ item }) => (
+          <Card
+            marginLeft="s"
+            marginRight="s"
+            marginBottom="xs"
+            marginTop="xs"
+            variant="elevated"
+            backgroundColor="primaryCardBackground"
+            borderRadius="s"
+          >
+            <TaskListItem {...item} onPress={openTask} />
+          </Card>
+        )}
         ListEmptyComponent={TasksEmptyComponent}
         ItemSeparatorComponent={TaskSeparator}
         ListHeaderComponent={TasksListHeader}

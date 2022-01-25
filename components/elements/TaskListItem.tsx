@@ -28,19 +28,19 @@ const TaskListItem: React.FC<TaskListItemProps> = ({
       onPress={() => onPress({ id, title, description } as TaskType)}
     >
       <Box
-        padding="s"
+        // padding="s"
         backgroundColor="primaryCardBackground"
-        borderColor="default"
-        borderWidth={1}
-        borderStyle="dashed"
-        borderRadius="s"
+        // borderColor="default"
+        // borderWidth={1}
+        // borderStyle="dashed"
+        // borderRadius="s"
       >
         {/* title */}
         <Text variant="taskListItemTitle">{title}</Text>
         {/* description */}
         {description && (
           <Text
-            numberOfLines={3}
+            numberOfLines={2}
             ellipsizeMode="tail"
             variant="taskListItemText"
           >

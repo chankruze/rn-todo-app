@@ -8,7 +8,7 @@ Copyright (c) Geekofia 2022 and beyond
 import Box from "../modules/Box";
 
 const TaskSeparator = () => {
-  return <Box height={4} />;
+  return <Box height={1} />;
 };
 
 export default TaskSeparator;
