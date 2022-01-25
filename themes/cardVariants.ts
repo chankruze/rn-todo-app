@@ -9,24 +9,26 @@ export const cardVariants = {
   primary: {
     backgroundColor: "primaryCardBackground",
     shadowOpacity: 0.3,
+    padding: {
+      phone: "s",
+      tablet: "m",
+    },
   },
   secondary: {
     backgroundColor: "secondaryCardBackground",
     shadowOpacity: 0.1,
+    padding: {
+      phone: "s",
+      tablet: "m",
+    },
   },
-  toolbar: {
-    backgroundColor: "toolbarBackground",
-    shadowOpacity: 0.1,
+  elevated: {
+    padding: {
+      phone: "s",
+      tablet: "m",
+    },
+    shadowOpacity: 1,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 4,
   },
-  // elevated: {
-  //   padding: {
-  //     phone: "s",
-  //     tablet: "m",
-  //   },
-  //   shadowColor: "#000",
-  //   shadowOpacity: 0.2,
-  //   shadowOffset: { width: 0, height: 5 },
-  //   shadowRadius: 15,
-  //   elevation: 5,
-  // },
 };

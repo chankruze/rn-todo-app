@@ -10,7 +10,7 @@ import { palette } from "./palette";
 const backgroundColors = {
   mainBackground: palette.grey[50],
   primaryCardBackground: palette.white,
-  secondaryCardBackground: palette.grey[400],
+  secondaryCardBackground: palette.grey[100],
   flatButtonBackground: palette.blue[500],
   toolbarBackground: palette.white,
 };
@@ -33,9 +33,23 @@ const borderColors = {
   default: palette.grey[600],
 };
 
+const bootstrapColors = {
+  primary: palette.blue[500],
+  secondary: palette.grey[500],
+  success: palette.green[500],
+  danger: palette.red[500],
+  warning: palette.yellow[500],
+  info: palette["blue-grey"][500],
+  light: palette.grey[50],
+  dark: palette.black,
+  white: palette.white,
+  muted: palette.grey[200],
+};
+
 export const colors = {
   ...backgroundColors,
   ...textColors,
   ...iconColors,
   ...borderColors,
+  ...bootstrapColors,
 };

@@ -41,13 +41,13 @@ export const textVariants = {
     color: "secondaryText",
   },
   toolbarTitle: {
-    fontFamily: "Nunito-Medium",
+    fontFamily: "Roboto-Bold",
     fontSize: 24,
     lineHeight: 32,
     color: "toolbarText",
   },
   taskListItemTitle: {
-    fontFamily: "Roboto-Medium",
+    fontFamily: "Roboto-Bold",
     fontSize: 16,
     lineHeight: 24,
     color: "primaryText",
@@ -62,5 +62,9 @@ export const textVariants = {
     textTransform: "uppercase",
     fontSize: 16,
     lineHeight: 24,
+  },
+  error: {
+    fontSize: 10,
+    color: "danger",
   },
 };
