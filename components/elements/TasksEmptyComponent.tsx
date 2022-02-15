@@ -6,7 +6,7 @@ Copyright (c) Geekofia 2022 and beyond
 */
 
 import Box from "../modules/Box";
-import Text from "../modules/Text";
+import AddTask from "../../assets/addTask.svg";
 
 const TasksEmptyComponent = () => {
   return (
@@ -16,8 +16,9 @@ const TasksEmptyComponent = () => {
       justifyContent="center"
       alignItems="center"
       backgroundColor="mainBackground"
+      paddingVertical="xl"
     >
-      <Text color="primaryText">Nothing to do!</Text>
+      <AddTask width="100%" />
     </Box>
   );
 };

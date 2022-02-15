@@ -13,30 +13,33 @@ import Text from "../modules/Text";
 import FlatButton from "./FlatButton";
 import ErrorComponent from "./ErrorComponent";
 import * as yup from "yup";
-import { nanoid } from "nanoid";
+import { customAlphabet } from "nanoid/non-secure";
+
+const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
 
 const initialValues = {
-  id: nanoid(),
+  id: () => nanoid(),
   title: "",
   description: "",
   completed: false,
 };
 
 const taskValidationSchema = yup.object().shape({
-  id: yup.number().required("Id is required"),
+  id: yup.string().required("Id is required"),
   title: yup.string().required("Title is Required"),
   description: yup
     .string()
     .min(8, ({ min }) => `Description must be at least ${min} characters`)
     .required("Description is required"),
-  completed: yup.boolean(),
+  completed: yup.boolean().default(false),
 });
 
-const onSubmit = (values: any) => {
-  console.log(values);
-};
+const NewTaskForm = ({ addTask, close }) => {
+  const onSubmit = (values: any) => {
+    addTask(values);
+    close();
+  };
 
-const NewTaskForm = () => {
   return (
     <Formik
       initialValues={initialValues}

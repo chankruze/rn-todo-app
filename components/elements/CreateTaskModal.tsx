@@ -10,7 +10,7 @@ import Box from "../modules/Box";
 import { MaterialIcons } from "@expo/vector-icons";
 import NewTaskForm from "./NewTaskForm";
 
-const CreateTaskModal = ({ close }) => {
+const CreateTaskModal = ({ close, addTask }) => {
   return (
     <Modal visible={true}>
       <Box
@@ -26,7 +26,7 @@ const CreateTaskModal = ({ close }) => {
             </Box>
           </TouchableOpacity>
         </Box>
-        <NewTaskForm />
+        <NewTaskForm addTask={addTask} close={close} />
       </Box>
     </Modal>
   );

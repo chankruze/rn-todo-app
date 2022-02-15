@@ -20,7 +20,7 @@ import Card from "../components/modules/Card";
 import CreateTaskModal from "../components/elements/CreateTaskModal";
 
 const Home = ({ navigation }) => {
-  const [tasks, setTasks] = useState<Array<TaskType>>(data);
+  const [tasks, setTasks] = useState<Array<TaskType>>([]);
   const [isCreateTaskModal, setIsCreateTaskModal] = useState<boolean>(false);
 
   const addTask = (newTask: TaskType) => {
@@ -41,7 +41,10 @@ const Home = ({ navigation }) => {
       </Box>
       {/* Add task modal */}
       {isCreateTaskModal && (
-        <CreateTaskModal close={() => setIsCreateTaskModal((prev) => !prev)} />
+        <CreateTaskModal
+          close={() => setIsCreateTaskModal((prev) => !prev)}
+          addTask={addTask}
+        />
       )}
       {/* tasks list */}
       <FlatList
@@ -62,8 +65,12 @@ const Home = ({ navigation }) => {
         )}
         ListEmptyComponent={TasksEmptyComponent}
         ItemSeparatorComponent={TaskSeparator}
-        ListHeaderComponent={TasksListHeader}
-        ListFooterComponent={TasksListFooter}
+        ListHeaderComponent={() =>
+          tasks.length > 0 ? <TasksListHeader /> : null
+        }
+        ListFooterComponent={() =>
+          tasks.length > 0 ? <TasksListFooter /> : null
+        }
       />
     </Box>
   );
